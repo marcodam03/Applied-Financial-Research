@@ -1,20 +1,22 @@
-Sustainable Finance & Portfolio Allocation
+# Sustainability Aware Asset Management: EM Equities
 
 ## Overview
-This project explores the integration of sustainability constraints (e.g., carbon footprint reduction) into an emerging market equity portfolio. The objective is to assess the trade-off between environmental impact and financial performance (Sharpe Ratio, Tracking Error).
+Research project focusing on integrating carbon-aware constraints into Emerging Markets (EM) equity portfolios without compromising financial efficiency.
 
-## Folder Structure
-- `data/`: Contains raw emissions/returns data and cleaned datasets.
-- `notebooks/`: Contains the Jupyter notebooks for EDA and initial strategy testing.
-- `src/`: Modular Python scripts for data cleaning, signal generation, and optimization.
-- `output/`: Generated performance reports, backtest statistics, and visualization plots.
+## Portfolio Strategies
+1. **Benchmarks:** Long-only Minimum-Variance and Value-Weighted portfolios.
+2. **Carbon-Constrained:** Tracking Error Minimization with a 50% carbon footprint reduction target.
+3. **Net Zero Objective:** Forward-looking strategy imposing a 10% annual reduction in carbon emissions (based on 2013 baseline).
 
-## Key Features
-*   **Universe:** Emerging Markets equities (2014-2025).
-*   **Methodology:** Rolling 10-year estimation window, tracking error minimization with CO2 emission constraints.
-*   **Technologies:** Python (pandas, numpy, scipy, scikit-learn).
+## Data Engineering
+- **Universe:** EM equities (2014-2025).
+- **Environmental Data:** Scope 1 and Scope 2 CO2 emissions.
+- **Consistency:** Rolling 10-year estimation windows to ensure covariance matrix relevance; forward-filling for emissions data gaps to prevent look-ahead bias.
 
-## Getting Started
-1. Clone the repository.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Run the pipeline: `FINAL.ipynb`.
+## Metrics
+- **Performance:** Volatility, annualized return, cumulative return, Sharpe Ratio.
+- **ESG:** Weighted-Average Carbon Intensity (WACI) and Carbon Footprint (CF).
+
+## Conclusion
+The results demonstrate that decarbonization and portfolio efficiency are not mutually exclusive, supporting the feasibility of Net Zero investing in Emerging Markets.
+
