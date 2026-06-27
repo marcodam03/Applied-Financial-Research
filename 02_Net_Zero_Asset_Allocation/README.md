@@ -20,3 +20,6 @@ Research project focusing on integrating carbon-aware constraints into Emerging 
 ## Conclusion
 The results demonstrate that decarbonization and portfolio efficiency are not mutually exclusive, supporting the feasibility of Net Zero investing in Emerging Markets.
 
+## Contact
+Marco D'Amico - [marco.dam03@gmail.com](mailto:marco.dam03@gmail.com)
+
