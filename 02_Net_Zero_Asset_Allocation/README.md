@@ -1,4 +1,4 @@
-# Project Name: Sustainable Finance & Portfolio Allocation
+Sustainable Finance & Portfolio Allocation
 
 ## Overview
 This project explores the integration of sustainability constraints (e.g., carbon footprint reduction) into an emerging market equity portfolio. The objective is to assess the trade-off between environmental impact and financial performance (Sharpe Ratio, Tracking Error).
