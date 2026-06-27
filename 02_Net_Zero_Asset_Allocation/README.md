@@ -17,7 +17,4 @@ This project explores the integration of sustainability constraints (e.g., carbo
 ## Getting Started
 1. Clone the repository.
 2. Install dependencies: `pip install -r requirements.txt`.
-3. Run the pipeline: `python main.py`.
-
-## Contact
-Marco D'Amico - [marco.damico@unil.ch](mailto:marco.damico@unil.ch)
+3. Run the pipeline: `FINAL.ipynb`.
