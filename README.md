@@ -1,6 +1,6 @@
 # Applied Financial Research Portfolio
 
-This repository contains a curated collection of quantitative finance projects developed during my Master of Science in Finance at **HEC Lausanne** and asset management strategies developed in autonomy. 
+This repository contains a collection of quantitative finance projects developed during my Master of Science in Finance at **HEC Lausanne** and asset management strategies developed in autonomy. 
 
 The goal of this portfolio is to demonstrate the application of rigorous quantitative methods, ranging from fixed income modeling to machine learning, to solve real-world financial problems.
 
