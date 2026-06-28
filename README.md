@@ -8,13 +8,13 @@ The goal of this portfolio is to demonstrate the application of rigorous quantit
 
 | Project Folder | Key Competencies |
 | :--- | :--- |
+| `00_Systematic_asset_management` | Momentum strategies, Backtesting |
 | `01_Nelson_Siegel_Yield_Curve` | Fixed Income Valuation, Non-linear Optimization |
 | `02_Net_Zero_Asset_Allocation` | Sustainable Finance, Portfolio Optimization, Carbon Metrics |
 | `03_SP500_Macro_Return_Forecasting` | Econometrics, Time-Series Analysis, Macroeconomic Factors |
 | `04_Multivariate_GARCH_Volatility` | Risk Management, Volatility Modeling, Time-Series |
 | `05_Salesforce_Valuation_Model` | Corporate Finance, DCF/APV Valuation, Financial Modeling |
 | `06_Machine_Learning_Trading_Strategy` | Algorithmic Trading, Predictive Modeling, Backtesting |
-| `Systematic-asset-management` | Momentum strategies, Backtesting |
 
 ## Technical Stack
 *   **Languages:** Python (Pandas, NumPy, SciPy, Scikit-learn, XGBoost), MATLAB.
