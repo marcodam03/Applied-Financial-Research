@@ -1,8 +1,8 @@
 # Applied Financial Research Portfolio
 
-This repository contains a curated collection of quantitative finance and data science projects developed during my Master of Science in Finance at **HEC Lausanne**. 
+This repository contains a curated collection of quantitative finance projects developed during my Master of Science in Finance at **HEC Lausanne** and asset management strategies developed in autonomy. 
 
-The goal of this portfolio is to demonstrate the application of rigorous quantitative methods—ranging from fixed income modeling to machine learning—to solve real-world financial problems.
+The goal of this portfolio is to demonstrate the application of rigorous quantitative methods, ranging from fixed income modeling to machine learning, to solve real-world financial problems.
 
 ## Repository Structure
 
@@ -14,6 +14,7 @@ The goal of this portfolio is to demonstrate the application of rigorous quantit
 | `04_Multivariate_GARCH_Volatility` | Risk Management, Volatility Modeling, Time-Series |
 | `05_Salesforce_Valuation_Model` | Corporate Finance, DCF/APV Valuation, Financial Modeling |
 | `06_Machine_Learning_Trading_Strategy` | Algorithmic Trading, Predictive Modeling, Backtesting |
+| `Systematic-asset-management` | Momentum strategies, Backtesting |
 
 ## Technical Stack
 *   **Languages:** Python (Pandas, NumPy, SciPy, Scikit-learn, XGBoost), MATLAB.
