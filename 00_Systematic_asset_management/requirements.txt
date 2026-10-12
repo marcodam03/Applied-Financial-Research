@@ -1,0 +1,9 @@
+numpy>=1.26
+pandas>=2.1
+matplotlib>=3.8
+seaborn>=0.13
+yfinance>=0.2.40
+requests>=2.31
+jupyter
+# live notebooks only
+ib_async>=1.0
