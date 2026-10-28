@@ -54,7 +54,7 @@ The cost is about 2 pp of CAGR versus v1; the Sharpe difference is not statistic
 |---|---|---|
 | Parameters chosen with hindsight | Walk-forward: SMA length and momentum horizon re-chosen every year on past data only | Goyal & Welch (2008) |
 | Turning points | Exposure from 12-month and 2-month trends (100% / 50% / 0%) | Goulding, Harvey & Mazzoleni (2023) |
-| Faster exits | Daily exit below the 200-day SMA, without waiting for month end | "Breaking Bad Trends" |
+| Faster exits | Daily exit below the 200-day SMA, without waiting for month end | "Breaking Bad Trends, interpretation" |
 | Strategic bonds | At least 20% in Treasuries and TIPS at all times | practitioner feedback |
 | Risk-based weights | Equal risk contribution with sample covariance, and with DCC-GARCH covariance re-estimated yearly | Maillard et al. (2010); Engle (2002) |
 | Stock-bond hedge | Up to 15% of idle cash into Treasuries when the stock-bond correlation is below -0.2 | stock-bond correlation literature |
