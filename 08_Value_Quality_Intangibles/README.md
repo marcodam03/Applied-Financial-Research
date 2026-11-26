@@ -47,6 +47,7 @@ scripts/
   compare_strategies.py final strategy vs its annual version
   run_asset_growth.py   reproduces the professor's asset-growth numbers
   validate_signal.py    compares a signal's portfolios with Ken French's
+paper.pdf               the final report
 holdout_log.txt         every use of the 2016-2025 holdout
 ```
 
