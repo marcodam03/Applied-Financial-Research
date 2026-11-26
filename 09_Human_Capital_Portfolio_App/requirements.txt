@@ -1,0 +1,8 @@
+streamlit>=1.44
+numpy
+pandas
+scipy
+yfinance
+plotly
+pyyaml
+requests
