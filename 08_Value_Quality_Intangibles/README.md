@@ -1,5 +1,7 @@
 # Industry-relative value and quality with intangible capital
 
+Marco D'Amico with Roberto Berardi, Roatanak Cédric Nim, Viola Brignoli, Ana Lucía Clavijo Martínez and Claudio Marcoli. Applied Investments, Prof. Amit Goyal, HEC Lausanne, November 2026. The full report is in `paper.pdf`.
+
 A long-short US equity strategy built for the Applied Investments course (MSc Finance,
 HEC Lausanne, fall 2026): buy the stocks that are cheap for their industry and generate
 real cash, once the accounts are corrected for intangible investment, and short the
@@ -79,4 +81,4 @@ strategy has been run once.
 
 ## Team
 
-Marco D'Amico, Roberto Berardi, Cedric Nim.
+Marco D'Amico, Roberto Berardi, Roatanak Cédric Nim, Viola Brignoli, Ana Lucía Clavijo Martínez, Claudio Marcoli.
