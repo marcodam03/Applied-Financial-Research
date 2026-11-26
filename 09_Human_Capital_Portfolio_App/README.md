@@ -1,6 +1,6 @@
 # Beyond the Portfolio
 
-QARM II group project, HEC Lausanne (autumn 2026).
+QARM II group project, HEC Lausanne (autumn 2026): Marco D'Amico, Roberto Berardi, Roatanak Cédric Nim, Viola Brignoli, Ana Lucía Clavijo Martínez and Claudio Marcoli.
 
 Investment advice for the savings of a Swiss employee, built around everything else the client owns: the
 career (the value today of all the salaries still to come) and the pension fund. A bank gives every balanced
@@ -37,8 +37,8 @@ Requirements: Git and Python 3 (tested with Python 3.13).
 macOS / Linux:
 
 ```bash
-git clone https://github.com/marcodamico03/QARM2.git
-cd QARM2
+git clone https://github.com/marcodam03/Applied-Financial-Research.git
+cd Applied-Financial-Research/09_Human_Capital_Portfolio_App
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -49,8 +49,8 @@ streamlit run app.py
 Windows (PowerShell):
 
 ```powershell
-git clone https://github.com/marcodamico03/QARM2.git
-cd QARM2
+git clone https://github.com/marcodam03/Applied-Financial-Research.git
+cd Applied-Financial-Research/09_Human_Capital_Portfolio_App
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
@@ -79,3 +79,7 @@ The code was built in five steps; the comments in the code refer to them.
 | `config/params.yaml` | | Every parameter and assumption |
 | `data/` | | Saved data (`raw/` as downloaded, CSV files in CHF) |
 | `tests/` | | Tests with known answers: `python tests/test_app.py` and one file per module |
+
+## Team
+Marco D'Amico, Roberto Berardi, Roatanak Cédric Nim, Viola Brignoli, Ana Lucía Clavijo Martínez and Claudio Marcoli.
+
