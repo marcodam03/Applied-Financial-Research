@@ -17,8 +17,8 @@ The full answer is in `paper.pdf`, and the presentation is in `recording.mp4`. T
 Open a terminal (on Nuvolos: *File > New > Terminal*) and run:
 
 ```
-git clone https://github.com/marcodamico03/Advanced_Data_Analytics.git
-cd Advanced_Data_Analytics
+git clone https://github.com/marcodam03/Applied-Financial-Research.git
+cd Applied-Financial-Research/07_Macro_Regimes_Risk_Parity
 pip install -r requirements.txt
 ```
 
@@ -48,7 +48,7 @@ The download takes 3 to 5 minutes and fills `data/raw/`.
 
 ## Step 3: run the notebooks, in order
 
-Open JupyterLab (on your computer: `jupyter lab`). In the file panel on the left, open the `Advanced_Data_Analytics` folder (on Nuvolos it is inside `/files`; click the refresh button if you do not see it), then the `code/` folder, and open the notebooks one by one. For each one, use *Kernel > Restart Kernel and Run All Cells*, and wait until it finishes before opening the next. Each notebook reads what the previous one saved, so the order matters.
+Open JupyterLab (on your computer: `jupyter lab`). In the file panel on the left, open the `Applied-Financial-Research/07_Macro_Regimes_Risk_Parity` folder, then the `code/` folder, and open the notebooks one by one. For each one, use *Kernel > Restart Kernel and Run All Cells*, and wait until it finishes before opening the next. Each notebook reads what the previous one saved, so the order matters.
 
 | Notebook | What it does | Time |
 |---|---|---|
@@ -94,7 +94,7 @@ code/helpers.py         functions used by more than one stage
 data/raw/               downloaded data (only the public part is on GitHub)
 data/processed/         created by the notebooks, not on GitHub
 figures/, tables/       created by 06_figures.ipynb
-paper.pdf, recording.mp4
+paper.pdf
 ```
 
 The AI tools I used are declared in the appendix of the paper.
