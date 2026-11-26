@@ -1,0 +1,57 @@
+# Research configuration read by scripts/run_signal.py. Every key below is used.
+# For an experiment, copy this file, edit the copy and run
+#   python scripts/run_signal.py --signal <name> --config configs/<copy>.yaml
+
+data:
+  factors: data/external/factors_monthly.csv   # fixed vintage shared by the team
+# The cleaned CRSP and Compustat files are always data/interim/crsp_clean.parquet and
+# data/interim/compustat_clean.parquet (written by src/data/clean.py). Accounting data
+# is used from July of the year after the fiscal year end, at least 6 months later;
+# src/data/panel.py checks it every time it loads the panel.
+
+# Sample periods (YYYY-MM). The test period is the holdout: run_signal.py only
+# computes it with --holdout. Do that ONCE per signal, after the signal and every
+# choice in this file are frozen.
+periods:
+  train: ["1963-07", "2005-12"]
+  validation: ["2006-01", "2015-12"]
+  test: ["2016-01", "2025-12"]
+
+# Which stocks can enter the portfolios, checked at each formation date. The
+# cleaned data already keeps only US common stocks on NYSE, AMEX and NASDAQ.
+# All filters off = the method of the slides and of Ken French's portfolios.
+universe:
+  min_price: null             # e.g. 5 drops stocks priced below $5
+  min_nyse_size_pct: null     # e.g. 0.2 drops stocks below the NYSE 20th percentile of market cap
+  exclude_financials: false   # SIC 6000-6999
+  exclude_utilities: false    # SIC 4900-4999
+
+portfolio:
+  n_portfolios: 10
+  nyse_breakpoints: true      # quantile cutoffs from NYSE stocks only (false: all stocks)
+  weighting: [ew, vw]
+
+costs:
+  # Every trade pays half the stock's closing bid-ask spread on the formation date
+  # (CRSP daily quotes; before 1993 an estimate for NYSE/AMEX stocks, see
+  # src/data/cost_inputs.py) plus a price impact that is larger for small stocks
+  # and big trades (src/portfolio/costs.py, professor's slides 21-24).
+  price_impact: true          # false = spread only
+  aum_musd: 100               # fund size per leg, $m, in aum_ref_month
+  aum_ref_month: "2025-12"
+  aum_scale: volume           # fund moves back in time with the market's dollar volume
+                              #   (same share of trading) | market_cap
+  impact_shape: linear        # linear (slides: lambda x % of daily volume) | sqrt
+  execution_days: 1           # days to execute a rebalancing (less volume per day)
+
+evaluation:
+  models: [CAPM, FF3, FF4, FF5, FF6, q4, q5]   # names defined in src/evaluation/alpha.py
+  headline_models: [CAPM, FF5]                  # alphas shown in the robustness printout
+  newey_west_lags: 6
+
+# The same backtest in other universes. Each entry overrides keys of `universe`.
+# Results in robustness.csv, next to the main universe above.
+robustness:
+  no_microcaps: {min_nyse_size_pct: 0.2}
+  price_above_5: {min_price: 5}
+  no_fin_util: {exclude_financials: true, exclude_utilities: true}

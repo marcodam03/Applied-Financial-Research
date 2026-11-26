@@ -1,0 +1,52 @@
+# Config of the ANNUAL version of the strategy, qvi_intan_full (sorted once a year,
+# at the end of June), used for the comparison with the final strategy:
+#   python scripts/compare_strategies.py
+# Same sample, universe, portfolios and trading costs as configs/final.yaml.
+
+data:
+  factors: data/external/factors_monthly.csv
+
+periods:
+  train: ["1963-07", "1994-12"]        # first half
+  validation: ["1995-01", "2015-12"]   # second half
+  test: ["2016-01", "2025-12"]         # holdout, only with --holdout
+
+universe:
+  min_price: null
+  min_nyse_size_pct: 0.2
+  exclude_financials: false
+  exclude_utilities: false
+
+portfolio:
+  n_portfolios: 10            # deciles
+  nyse_breakpoints: true
+  weighting: [ew, vw]
+  buffer: 0                   # turnover buffer, 0 = off (the "buffer" robustness variant uses 2)
+
+costs:
+  # Every trade pays half the stock's closing bid-ask spread on the formation date
+  # (CRSP daily quotes; before 1993 an estimate for NYSE/AMEX stocks, see
+  # src/data/cost_inputs.py) plus a price impact that is larger for small stocks
+  # and big trades (src/portfolio/costs.py, professor's slides 21-24).
+  price_impact: true          # false = spread only
+  aum_musd: 100               # fund size per leg, $m, in aum_ref_month
+  aum_ref_month: "2025-12"
+  aum_scale: volume           # fund moves back in time with the market's dollar volume
+                              #   (same share of trading) | market_cap
+  impact_shape: linear        # linear (slides: lambda x % of daily volume) | sqrt
+  execution_days: 1           # days to execute a rebalancing (less volume per day)
+
+evaluation:
+  models: [CAPM, FF5, FF6, q5, q5+STR]
+  headline_models: [CAPM, FF5, q5, q5+STR]
+  newey_west_lags: 6
+  # periods for alphas and robustness tables (full sample + zoom on recent years)
+  alpha_periods:
+    full: ["1963-07", "2025-12"]
+    last30: ["1995-01", "2025-12"]
+    last20: ["2005-01", "2025-12"]
+
+robustness:
+  all_stocks: {min_nyse_size_pct: null}   # with microcaps
+  large_caps: {min_nyse_size_pct: 0.5}    # above the NYSE median
+  buffer2: {buffer: 2}                    # stay in decile 10 (1) while in 8-10 (1-3)
