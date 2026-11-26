@@ -1,0 +1,82 @@
+# FAST config for the strategy search (scripts/run_fast.py). Same data, periods,
+# universe (no microcaps), costs and timing as strategies.yaml, so the results are
+# the same; it only computes less:
+#   - 5 factor models instead of 9 (CAPM, FF5, FF6, q5, q5+STR)
+#   - 5 robustness variants instead of 7: all stocks and large caps (micro vs large),
+#     and three ways to trade a monthly signal less often
+# Used by scripts/run_fast.py for the MONTHLY signals (configs/fast.yaml for annual ones).
+# MAIN PORTFOLIO HELD 3 MONTHS (portfolio.hold_months: 3): sorted at the end of March,
+# June, September and December, the best trade-off for qvi_timely on October 15.
+# Config for the strategy search (our new signals). Same keys as default.yaml.
+#   python scripts/run_signal.py --signal <name> --config configs/strategies.yaml
+#
+# Differences from default.yaml:
+# 1. The backtest covers the whole sample before the team's holdout, 1963-07 to
+#    2015-12. run_signal.py reports "train", "validation" and "train+validation":
+#    here they simply mean the first half (1963-1994), the second half (1995-2015)
+#    and the full sample. The test period 2016-2025 is the same holdout as in
+#    default.yaml: run_signal.py never shows it without --holdout (HOLDOUT_START in
+#    run_signal.py), and the alpha periods below are cut at 2015-12 until then.
+# 2. The main universe excludes microcaps (below the NYSE 20th size percentile):
+#    alphas from stocks too small to trade are not credible. "all_stocks" in the
+#    robustness section shows the result with every stock.
+# 3. The headline alphas are CAPM, FF6, q5 (the hardest benchmarks) and q5+STR
+#    (q5 plus short-term reversal, needs `python src/data/factors.py --add-reversal`).
+# 4. Robustness adds a turnover buffer variant (portfolio.buffer, see sorts.py).
+# 5. final_signals: our final strategies (file names in src/signals/).
+#    `python scripts/run_all.py --final` backtests them with this config, and the
+#    menu (scripts/menu.py) offers them. To add or drop a strategy, edit this list:
+#    no code to change.
+
+final_signals: [intangible_profit]  # not used by run_fast.py
+
+data:
+  factors: data/external/factors_monthly.csv
+
+periods:
+  train: ["1963-07", "1994-12"]        # first half
+  validation: ["1995-01", "2015-12"]   # second half
+  test: ["2016-01", "2025-12"]         # holdout, only with --holdout
+
+universe:
+  min_price: null
+  min_nyse_size_pct: 0.2
+  exclude_financials: false
+  exclude_utilities: false
+
+portfolio:
+  n_portfolios: 10            # a signal can override it (dividend_month uses 2)
+  nyse_breakpoints: true
+  weighting: [ew, vw]
+  buffer: 0                   # turnover buffer, 0 = off
+  hold_months: 3              # monthly signals: sort every 3 months, hold meanwhile
+
+costs:
+  # Every trade pays half the stock's closing bid-ask spread on the formation date
+  # (CRSP daily quotes; before 1993 an estimate for NYSE/AMEX stocks, see
+  # src/data/cost_inputs.py) plus a price impact that is larger for small stocks
+  # and big trades (src/portfolio/costs.py, professor's slides 21-24).
+  price_impact: true          # false = spread only
+  aum_musd: 100               # fund size per leg, $m, in aum_ref_month
+  aum_ref_month: "2025-12"
+  aum_scale: volume           # fund moves back in time with the market's dollar volume
+                              #   (same share of trading) | market_cap
+  impact_shape: linear        # linear (slides: lambda x % of daily volume) | sqrt
+  execution_days: 1           # days to execute a rebalancing (less volume per day)
+
+evaluation:
+  models: [CAPM, FF5, FF6, q5, q5+STR]
+  headline_models: [CAPM, FF5, q5, q5+STR]
+  newey_west_lags: 6
+  # periods for alphas and robustness tables (full sample + zoom on recent years)
+  alpha_periods:
+    full: ["1963-07", "2025-12"]
+    last30: ["1995-01", "2025-12"]
+    last20: ["2005-01", "2025-12"]
+
+robustness:
+  all_stocks: {min_nyse_size_pct: null}   # with microcaps
+  large_caps: {min_nyse_size_pct: 0.5}    # above the NYSE median
+  hold1: {hold_months: 1}                 # sort every month
+  hold6: {hold_months: 6}                 # sort every 6 months
+  hold3_buffer2: {buffer: 2}              # every 3 months + turnover buffer
